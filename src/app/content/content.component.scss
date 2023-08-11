@@ -8,10 +8,17 @@
     position: absolute;
     top: 24px;
     right: 16px;
+}
+.selectionList {
+    position: absolute;
+    top: 48px;
+    right: 16px;
     display: flex;
-    // justify-content: center;
+    
     align-items: center;
     gap: 4px;
+
+
 }
 
 .currencyLink {

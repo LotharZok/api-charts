@@ -34,7 +34,8 @@ export class ContentComponent {
      */
     constructor() {
         // console.log(API_KEY);
-        this.loadRate('BTC');
+
+        //this.loadRate('BTC');
     }
 
 
@@ -137,6 +138,12 @@ export class ContentComponent {
         // })
     }
 
+
+    /**
+     * Sets some variables so the data for the selected currency will be displayed. Starts loadRate with this currency.
+     * 
+     * @param curr - The selected currency, whose rate is to be displayed
+     */
     loadCurrency(curr: string) {
         console.log('Selected currency: ', curr);
 
