@@ -3,3 +3,21 @@
     padding: 0 16px;
     overflow: hidden;
 }
+
+.selection {
+    position: absolute;
+    top: 24px;
+    right: 16px;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.currencyLink {
+    cursor: pointer;
+    
+    &:hover {
+        color: blue;
+    }
+}

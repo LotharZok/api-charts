@@ -18,34 +18,44 @@ export class ContentComponent {
     // Test-Variable for a floating bars chart (doesn't work)
     // chartLowHigh: number[][] = [];
     curDate: string = new Date().toDateString();  // the current date - used in html file
+    selCurr: string = 'BTC';                      // the selectec Currency - used in html file
+    selName: string = 'Bitcoin';                  // the selected Name of the currency - used in html file
+
+    currencies: {[key:string]: string} = {
+        "BTC": 'Bitcoin',
+        "ETH": 'Ethereum',
+        "USDT": 'Tether',
+        "BNB": 'Binance Coin',
+        "XRP": 'Ripple'
+    }
 
     /**
      * Constructor: Starts loading of the rates
      */
     constructor() {
         // console.log(API_KEY);
-        this.loadRate();
+        this.loadRate('BTC');
     }
 
 
     /**
      * Loads the current Bitcoin rate and starts loading of historical data.
      */
-    async loadRate() {
-        let url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=EUR&apikey=' + API_KEY;
+    async loadRate(currency: string) {
+        let url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${currency}&to_currency=EUR&apikey=` + API_KEY;
         let response = await fetch(url);
         let responseAsJson = await response.json(); 
         this.btcRate = Math.round(responseAsJson['Realtime Currency Exchange Rate']['5. Exchange Rate']);
 
-        this.loadMonthlyRates();
+        this.loadMonthlyRates(currency);
     }
 
 
     /**
      * Loads the historical Bitcoins rates and calls the function to draw the chart.
      */
-    async loadMonthlyRates() {
-        let url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=EUR&apikey=' + API_KEY;
+    async loadMonthlyRates(currency: string) {
+        let url = `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=${currency}&market=EUR&apikey=` + API_KEY;
         let response = await fetch(url);
         let responseAsJson = await response.json();
         // console.log('Exchange rate: ', responseAsJson['Time Series (Digital Currency Monthly)']);
@@ -125,5 +135,15 @@ export class ContentComponent {
         //         }
         //     }
         // })
+    }
+
+    loadCurrency(curr: string) {
+        console.log('Selected currency: ', curr);
+
+        this.selCurr = curr;
+        console.log(this.currencies[curr]);
+        this.selName = this.currencies[curr];
+
+        this.loadRate(curr);
     }
 }

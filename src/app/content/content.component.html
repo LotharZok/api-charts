@@ -1,7 +1,15 @@
 <div class="content">
-    <h1>Bitcoin rate in € at the end of the month</h1>
-    <p>The current Bitcoin rate is: <b>{{ btcRate }} €</b> (Date: {{ curDate }})</p>
+    <h1>{{ selName }} rate in € at the end of the month</h1>
+    <p>The current {{ selName }} rate is: <b>{{ btcRate }} €</b> (Date: {{ curDate }})</p>
     <div>
         <canvas id="canvas">{{ chart }}</canvas>
+    </div>
+    <div class="selection">
+        <!-- Select digital currency:  -->
+        <span (click)="loadCurrency('BTC')" class="currencyLink">Bitcoin</span> &bullet; 
+        <span (click)="loadCurrency('ETH')" class="currencyLink">Ethereum</span> &bullet; 
+        <span (click)="loadCurrency('USDT')" class="currencyLink">Tether</span> &bullet; 
+        <span (click)="loadCurrency('BNB')" class="currencyLink">Binance Coin</span> &bullet; 
+        <span (click)="loadCurrency('XRP')" class="currencyLink">Ripple</span>
     </div>
 </div>
