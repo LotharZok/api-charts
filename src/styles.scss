@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.full-width {
+    width: 100%;
+}
+.ml-16 {
+    margin-left: 16px !important;
+}
+.mr-16 {
+    margin-right: 16px;
+}
+.mt-8 {
+    margin-top: 8px !important;
+}
+.mt-32 {
+    margin-top: 32px;
+}
+.pt-5 {
+    padding-top: 5px;
+}
