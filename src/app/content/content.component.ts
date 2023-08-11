@@ -9,14 +9,15 @@ import { Chart } from 'chart.js/auto';
 })
 export class ContentComponent {
     title = 'API Chart';
-    btcRate: number = 0;
-    chart: any = [];
+    btcRate: number = 0;                          // current Bitcoin rate - used in html file
+    chart: any = [];                              // will contain the chart itself - used in html file
     chartLabels: string[] = [];
     chartData: number[] = [];
     chartLow: number[] = [];
     chartHigh: number[] = [];
+    // Test-Variable for a floating bars chart (doesn't work)
     // chartLowHigh: number[][] = [];
-    curDate: string = new Date().toDateString();
+    curDate: string = new Date().toDateString();  // the current date - used in html file
 
     /**
      * Constructor: Starts loading of the rates
